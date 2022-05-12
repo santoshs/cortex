@@ -8,3 +8,7 @@
 
 {{ $main := resources.Get "css/main.css" | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $main.Permalink }}"/>
+
+{{ range site.Params.custom_css }}
+  <link rel="stylesheet" href="{{ relURL (.) }}">
+{{ end }}
